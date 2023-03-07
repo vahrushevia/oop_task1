@@ -45,7 +45,7 @@ public abstract class BaseHero {
         int damage = BaseHero.r.nextInt(10, 20);
         target.takeDamage(damage);
     }
-
+    public abstract void step();
     // метод, который должен быть переопределен в классах-потомках
     public abstract void specialAbility();
 }

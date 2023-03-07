@@ -1,0 +1,29 @@
+package oop_task1;
+
+public class Monk extends BaseHero {
+    /**
+    * Монах
+    * @param name - Имя
+    */
+    public Monk(String name) {
+        super(name, 90);
+    }
+
+    public Monk() {
+        super();
+    }
+
+    public void meditate() {
+        System.out.println(this.name + " is meditating.");
+    }
+
+    public void heal() {
+        System.out.println(this.name + " is using their healing powers.");
+    }
+    public void step() {
+        System.out.println("Monk walks...");
+    }
+    public String getInfo() {
+        return "Я Монах";
+    }
+}

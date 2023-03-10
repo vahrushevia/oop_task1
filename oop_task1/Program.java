@@ -1,45 +1,62 @@
 package oop_task1;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
 public class Program {
     public static void main(String[] args) {
 
-        List <BaseHero> heroList = new ArrayList<>();
+        List<BaseHero> heroesList1 = new ArrayList<>();
+        List<BaseHero> heroesList2 = new ArrayList<>();
         Random random = new Random();
 
         for (int i = 0; i < 10; i++) {
-            int heroType = random.nextInt(7); // Случайный тип персонажа от 0 до 6
-            switch (heroType) {
+            int heroType1 = random.nextInt(4); // Случайный тип персонажа от 0 до 3
+            int heroType2 = random.nextInt(4) + 4; // Случайный тип персонажа от 4 до 7
+            switch (heroType1) {
                 case 0:
-                    heroList.add(new Peasant("Крестьянин #" + i));
+                    heroesList1.add(new Peasant("Крестьянин #" + i));
                     break;
                 case 1:
-                    heroList.add(new Rogue("Разбойник #" + i));
+                    heroesList1.add(new Rogue("Разбойник #" + i));
                     break;
                 case 2:
-                    heroList.add(new Sniper("Снайпер #" + i));
+                    heroesList1.add(new Sniper("Снайпер #" + i));
                     break;
                 case 3:
-                    heroList.add(new Warlock("Колдун #" + i));
+                    heroesList1.add(new Warlock("Колдун #" + i));
                     break;
+            }
+            switch (heroType2) {
                 case 4:
-                    heroList.add(new Spearman("Копейщик #" + i));
+                    heroesList2.add(new Peasant("Крестьянин #" + i));
                     break;
                 case 5:
-                    heroList.add(new Crossbowman("Арбалетчик #" + i));
+                    heroesList2.add(new Spearman("Копейщик #" + i));
                     break;
                 case 6:
-                    heroList.add(new Monk("Монах #" + i));
+                    heroesList2.add(new Crossbowman("Арбалетчик #" + i));
+                    break;
+                case 7:
+                    heroesList2.add(new Monk("Монах #" + i));
                     break;
             }
         }
 
-        for (BaseHero hero : heroList) {
+        List<BaseHero> allHeroes = new ArrayList<>();
+        allHeroes.addAll(heroesList1);
+        allHeroes.addAll(heroesList2);
+
+        // Сортируем всех персонажей по скорости
+        Collections.sort(allHeroes, (h1, h2) -> h2.getSpeed() - h1.getSpeed());
+
+        // Выводим информацию обо всех персонажах
+        for (BaseHero hero : allHeroes) {
             System.out.println(hero.getInfo());
         }
+    }
 
 
 
@@ -67,5 +84,5 @@ public class Program {
         // crossbowman.attack(monk);
         // spearman.takeDamage(50);
         // monk.heal(20);
-    }
+    
 }

@@ -56,33 +56,7 @@ public class Program {
         for (BaseHero hero : allHeroes) {
             System.out.println(hero.getInfo());
         }
+        Peasant farmer = new Peasant("John", 10, 20);
     }
 
-
-
-        // Peasant peasant = new Peasant("John");
-        // Rogue rogue = new Rogue("Jack");
-        // Sniper sniper = new Sniper("Emily");
-        // Warlock warlock = new Warlock("Victor");
-        // Spearman spearman = new Spearman("Gus");
-        // Crossbowman crossbowman = new Crossbowman("Lily");
-        // Monk monk = new Monk("Olivia");
-
-        // Peasant peasant = new Peasant("John", 150);
-        // Rogue rogue = new Rogue("Alice", 150);
-        // Sniper sniper = new Sniper("Bob", 120);
-        // Warlock warlock = new Warlock("Eve", 80);
-        // Spearman spearman = new Spearman("David", 200);
-        // Crossbowman crossbowman = new Crossbowman("Olivia", 110);
-        // Monk monk = new Monk("Grace", 90);
-
-        // можем использовать каждый персонаж и вызывать их методы
-        // peasant.attack(rogue);
-        // rogue.attack(spearman);
-        // sniper.heal(50);
-        // warlock.heal(30);
-        // crossbowman.attack(monk);
-        // spearman.takeDamage(50);
-        // monk.heal(20);
-    
 }

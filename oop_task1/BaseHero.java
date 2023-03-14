@@ -1,4 +1,5 @@
 package oop_task1;
+
 import java.util.Random;
 
 public abstract class BaseHero {
@@ -11,8 +12,9 @@ public abstract class BaseHero {
     private int speed;
     private int delivery;
     private int magic;
+    private String name;
 
-    public Rogue(String name) {
+    public BaseHero(String name) {
         super(name);
         this.attack = 8;
         this.defense = 3;
@@ -25,7 +27,8 @@ public abstract class BaseHero {
         this.magic = 0;
     }
 
-    public Rogue(String name, int attack, int defense, int shots, int minDamage, int maxDamage, int health, int speed, int delivery, int magic) {
+    public BaseHero(String name, int attack, int defense, int shots, int minDamage, int maxDamage, int health,
+            int speed, int delivery, int magic) {
         super(name);
         this.attack = attack;
         this.defense = defense;
@@ -37,9 +40,11 @@ public abstract class BaseHero {
         this.delivery = delivery;
         this.magic = magic;
     }
+
     private String getName(String name) {
         return name;
     }
+
     private Object getAttack() {
         return attack;
     }
@@ -81,64 +86,94 @@ public abstract class BaseHero {
                 this.getName(), this.getHealth(), this.getAttack(), this.getDefense(),
                 this.getDamageMin(), this.getDamageMax());
     }
+
     public String getInfo() {
-        return String.format("Name: %s, Health: %d, Attack: %d, Defense: %d, Damage: %d-%d, Shots: %d, Speed: %d, Delivery: %d, Magic: %d",
+        return String.format(
+                "Name: %s, Health: %d, Attack: %d, Defense: %d, Damage: %d-%d, Shots: %d, Speed: %d, Delivery: %d, Magic: %d",
                 this.getName(), this.getHealth(), this.getAttack(), this.getDefense(),
                 this.getDamageMin(), this.getDamageMax(), this.getShots(), this.getSpeed(),
                 this.getDelivery(), this.getMagic());
     }
 
- 
+    public BaseHero(String name, int x, int y) {
+        this.name = name;
+        this.coord = new Coord(x, y);
+    }
 
-  
+    protected Coord coord;
+
+    protected static class Coord {
+        private int x;
+        private int y;
+
+        public Coord(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        public int getX() {
+            return x;
+        }
+
+        public void setX(int x) {
+            this.x = x;
+        }
+
+        public int getY() {
+            return y;
+        }
+
+        public void setY(int y) {
+            this.y = y;
+        }
+    }
 }
-    // protected static int number;
-    // protected static Random r;
+// protected static int number;
+// protected static Random r;
 
-    // protected String name;
-    // protected int hp;
-    // protected int maxHp;
+// protected String name;
+// protected int hp;
+// protected int maxHp;
 
-    // static {
-    //     BaseHero.number = 0;
-    //     BaseHero.r = new Random();
-    // }
+// static {
+// BaseHero.number = 0;
+// BaseHero.r = new Random();
+// }
 
-    // public BaseHero(String name, int hp) {
-    //     this.name = name;
-    //     this.hp = hp;
-    //     this.maxHp = hp;
-    // }
+// public BaseHero(String name, int hp) {
+// this.name = name;
+// this.hp = hp;
+// this.maxHp = hp;
+// }
 
-    // public BaseHero() {
-    //     this(String.format("Hero #%d", ++BaseHero.number),
-    //             BaseHero.r.nextInt(100, 200));
-    // }
+// public BaseHero() {
+// this(String.format("Hero #%d", ++BaseHero.number),
+// BaseHero.r.nextInt(100, 200));
+// }
 
-    // public String getInfo() {
-    //     return String.format("Name: %s  Hp: %d  Type: %s",
-    //             this.name, this.hp, this.getClass().getSimpleName());
-    // }
+// public String getInfo() {
+// return String.format("Name: %s Hp: %d Type: %s",
+// this.name, this.hp, this.getClass().getSimpleName());
+// }
 
-    // public void heal(int hp) {
-    //     this.hp = hp + this.hp > this.maxHp ? this.maxHp : hp + this.hp;
-    // }
+// public void heal(int hp) {
+// this.hp = hp + this.hp > this.maxHp ? this.maxHp : hp + this.hp;
+// }
 
-    // public void takeDamage(int damage) {
-    //     if (this.hp - damage > 0) {
-    //         this.hp -= damage;
-    //     }
-    //     // else { die(); }
-    // }
+// public void takeDamage(int damage) {
+// if (this.hp - damage > 0) {
+// this.hp -= damage;
+// }
+// // else { die(); }
+// }
 
-    // public void attack(BaseHero target) {
-    //     int damage = BaseHero.r.nextInt(10, 20);
-    //     target.takeDamage(damage);
-    // }
-    // public abstract void step();
-    // // метод, который должен быть переопределен в классах-потомках
-    // public abstract void specialAbility();
-
+// public void attack(BaseHero target) {
+// int damage = BaseHero.r.nextInt(10, 20);
+// target.takeDamage(damage);
+// }
+// public abstract void step();
+// // метод, который должен быть переопределен в классах-потомках
+// public abstract void specialAbility();
 
 // import java.util.Random;
 

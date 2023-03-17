@@ -13,6 +13,9 @@ public abstract class BaseHero {
     private int delivery;
     private int magic;
     private String name;
+    private int maxHealth;
+    private boolean isDead;
+    private String state;
 
     public BaseHero(String name) {
         super(name);
@@ -25,6 +28,8 @@ public abstract class BaseHero {
         this.speed = 6;
         this.delivery = 0;
         this.magic = 0;
+        this.isDead = false;
+        this.state = "Stand";
     }
 
     public BaseHero(String name, int attack, int defense, int shots, int minDamage, int maxDamage, int health,
@@ -39,6 +44,8 @@ public abstract class BaseHero {
         this.speed = speed;
         this.delivery = delivery;
         this.magic = magic;
+        this.isDead = false;
+        this.state = "Stand";
     }
 
     private String getName(String name) {
@@ -79,6 +86,40 @@ public abstract class BaseHero {
 
     private Object getMagic() {
         return magic;
+    }
+    public int getMaxHealth() {
+        return health;
+    }
+  public void takeDamage(int damage) {
+        if (!isDead) {
+            health -= damage;
+            if (health <= 0) {
+                isDead = true;
+                state = "Dead";
+            }
+        }
+    }
+
+    public void heal(int amount) {
+        if (!isDead) {
+            health += amount;
+            if (health > 0) {
+                health = getMaxHealth();
+            }
+        }
+    }
+
+
+    public boolean isDead() {
+        return isDead;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
     public String getShortDescription() {

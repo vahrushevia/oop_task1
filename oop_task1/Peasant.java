@@ -86,5 +86,9 @@ public class Peasant extends BaseHero {
     public int getMagic() {
         return magic;
     }
-
+    public void step() {
+        if (!isDead()) {
+            setState("Stand");
+        }
+    }
 }

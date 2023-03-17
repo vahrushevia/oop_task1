@@ -1,6 +1,9 @@
 package oop_task1;
 
+import java.util.ArrayList;
+
 public class Warlock extends BaseHero {
+    private ArrayList<Character> party;
 
     // Конструктор с параметрами
     public Warlock(String name) {
@@ -16,26 +19,24 @@ public class Warlock extends BaseHero {
      * 
      * @param name - Имя
      */
+    public void step() {
+        if (!isDead()) {
+            setState("Stand");
 
-    // public Warlock(String name) {
-    //     super(name, 50);
-    // }
+            // Find the character with the lowest health in the party
+            Character target = null;
+            int lowestHealth = Integer.MAX_VALUE;
+            for (Character c : party) {
+                if (!c.isDead() && c.getHealth() < lowestHealth) {
+                    target = c;
+                    lowestHealth = c.getHealth();
+                }
+            }
 
-    // public Warlock() {
-    //     super();
-    // }
-
-    // public void curse() {
-    //     System.out.println(this.name + " is cursing the enemy.");
-    // }
-
-    // public void summonDemon() {
-    //     System.out.println(this.name + " is summoning a demon.");
-    // }
-    // public void step() {
-    //     System.out.println("Warlock walks...");
-    // }
-    // public String getInfo() {
-    //     return "Я Колдун";
-    // }
+            // If a target was found, heal them
+            if (target != null) {
+                heal(10); // Change this to adjust the amount healed
+            }
+        }
+   
 }

@@ -59,4 +59,17 @@ public class Program {
         Peasant farmer = new Peasant("John", 10, 20);
     }
 
+    for(
+
+    int i = 1;i<=10;i++)
+    {
+        System.out.println("Round " + i + ":");
+
+        for (BaseHero c : allHeroes) {
+            c.step();
+            System.out.println(c.getName() + " is " + c.getState() + " with " + c.getHealth() + " health.");
+        }
+
+        System.out.println();
+    }
 }

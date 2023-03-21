@@ -22,7 +22,11 @@ public class Monk extends BaseHero {
     public int getMagic() {
         return magic;
     }
-   
+    public void step() {
+        if (!isDead()) {
+            setState("Stand");
+        }
+    }
     // public Monk(String name) {
     //     super(name, 90);
     // }
